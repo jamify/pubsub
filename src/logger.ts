@@ -1,11 +1,24 @@
 import { createLogger, transports } from 'winston';
-
+import { Level } from './constants';
 export class Winston {
 
   public static info(message: string, body: any, obj: any = {}, origin: string = 'PUBSUB') {
     const logObject = {
       sessionId: obj.id || this.getSessionId(),
-      level: 'info',
+      level: Level.INFO,
+      message,
+      body,
+      origin,
+    };
+    if (this.logger) {
+      this.logger.info(logObject);
+    }
+  }
+
+  public static error(message: string, body: any, obj: any = {}, origin: string = 'PUBSUB') {
+    const logObject = {
+      sessionId: obj.id || this.getSessionId(),
+      level: Level.ERROR,
       message,
       body,
       origin,
@@ -32,4 +45,5 @@ export class Winston {
     }
     return this.sessionId;
   }
+
 }
