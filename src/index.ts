@@ -1,5 +1,5 @@
 import { Instance } from './instance';
 
-let app = new Instance().app;
+const app = new Instance().getApp;
 
 export { app };
