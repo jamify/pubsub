@@ -3,7 +3,7 @@
     "name": "pubsub",
     "type": "npm",
     "public": true,
-    "alias": "pubsub",
+    "alias": "pubsub-jamify",
     "files": [
         "dist"
     ]
