@@ -5,6 +5,7 @@
     "public": true,
     "alias": "pubsub-jamify",
     "files": [
-        "dist"
+        "src",
+        "tsconfig.json"
     ]
 }
