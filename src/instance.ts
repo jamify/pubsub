@@ -17,6 +17,13 @@ export class Instance {
 
   constructor() {
     this.app = express();
+
+    this.app.get('/ping', (req, res) => {
+      Winston.info(`pinged`, {}, Instance.SYSTEM);
+      res.send('pong');
+      res.end();
+    });
+
     this.port = process.env.PORT || Instance.PORT;
     this.app.use(cors());
     this.app.options('*', cors());
@@ -32,6 +39,18 @@ export class Instance {
   private listen(): void {
     this.server.listen(this.port, () => {
       Winston.info(`Listening on ${ this.port }`, {}, Instance.SYSTEM);
+    });
+
+    this.io.on(Event.CONNECT, (socket: any) => {
+      Winston.info(`Connected client on port ${ this.port }.`, {}, Instance.SYSTEM);
+
+      socket.on(Event.MESSAGE, (m: string) => {
+        Winston.info(`[server](message): ${ m }`, {}, Instance.SYSTEM);
+        this.io.emit('message', m);
+      });
+      socket.on(Event.DISCONNECT, () => {
+        Winston.info(`Disconnected client on port ${ this.port }.`, {}, Instance.SYSTEM);
+      });
     });
   }
 

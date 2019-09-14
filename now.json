@@ -1,0 +1,10 @@
+{
+    "version": 1,
+    "name": "pubsub",
+    "type": "npm",
+    "public": true,
+    "alias": "pubsub",
+    "files": [
+        "dist"
+    ]
+}
