@@ -4,7 +4,7 @@ export class Winston {
 
   public static info(message: string, body: any, obj: any = {}, origin: string = 'PUBSUB') {
     const logObject = {
-      sessionId: obj.id || this.getSessionId(),
+      sessionId: obj.id || 'UNKNOWN',
       level: Level.INFO,
       message,
       body,
@@ -17,7 +17,7 @@ export class Winston {
 
   public static error(message: string, body: any, obj: any = {}, origin: string = 'PUBSUB') {
     const logObject = {
-      sessionId: obj.id || this.getSessionId(),
+      sessionId: obj.id || 'UNKNOWN',
       level: Level.ERROR,
       message,
       body,
