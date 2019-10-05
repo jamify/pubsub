@@ -47,7 +47,7 @@ export class Instance {
 
       socket.on(Event.CHANNEL, (channel: string, profile: any = {}) => {
         socket.join(channel);
-        Winston.info(`Joining channel`, profile, {}, channel);
+        Winston.info(`Joining channel`, {}, profile, channel);
         this.io.emit(Event.CHANNEL, channel);
       });
 
@@ -56,7 +56,7 @@ export class Instance {
       });
 
       socket.on(Event.PROPOGATE, (channel: string, track: Track, profile: any = {}) => {
-        Winston.info(`propagating...`, profile, {}, channel);
+        Winston.info(`propagating...`, track, profile, channel);
         this.io.sockets.in(channel).emit(Event.TRACK, track);
       });
     });
