@@ -4,9 +4,10 @@ import * as cors from 'cors';
 import { Winston } from './logger';
 import { Event } from './constants';
 import { createServer, Server } from 'http';
+import { Track } from './types';
 
 export class Instance {
-  public static readonly PORT: number = 8080;
+  public static readonly PORT: number = 3000;
   public static readonly SYSTEM: any = {
     id: -1,
   };
@@ -44,12 +45,19 @@ export class Instance {
     this.io.on(Event.CONNECT, (socket: any) => {
       Winston.info(`Connected client on port ${ this.port }.`, {}, Instance.SYSTEM);
 
-      socket.on(Event.MESSAGE, (m: string) => {
-        Winston.info(`[server](message): ${ m }`, {}, Instance.SYSTEM);
-        this.io.emit('message', m);
+      socket.on(Event.CHANNEL, (channel: string, profile: any = {}) => {
+        socket.join(channel);
+        Winston.info(`Joining channel`, profile, {}, channel);
+        this.io.emit(Event.CHANNEL, channel);
       });
+
       socket.on(Event.DISCONNECT, () => {
         Winston.info(`Disconnected client on port ${ this.port }.`, {}, Instance.SYSTEM);
+      });
+
+      socket.on(Event.PROPOGATE, (channel: string, track: Track, profile: any = {}) => {
+        Winston.info(`propagating...`, profile, {}, channel);
+        this.io.sockets.in(channel).emit(Event.TRACK, track);
       });
     });
   }

@@ -1,7 +1,9 @@
 export enum Event {
   CONNECT = 'connect',
   DISCONNECT = 'disconnect',
-  MESSAGE = 'message',
+  CHANNEL = 'channel',
+  PROPOGATE = 'propagate',
+  TRACK = 'track',
 }
 
 export enum Level {
