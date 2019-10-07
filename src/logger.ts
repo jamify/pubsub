@@ -1,5 +1,6 @@
 import { createLogger, transports } from 'winston';
 import { Level } from './constants';
+
 export class Winston {
 
   public static info(message: string, body: any, obj: any = {}, origin: string = 'PUBSUB') {
@@ -24,7 +25,7 @@ export class Winston {
       origin,
     };
     if (this.logger) {
-      this.logger.info(logObject);
+      this.logger.error(logObject);
     }
   }
 
@@ -40,7 +41,7 @@ export class Winston {
     this.sessionId += 1;
     if (this.logger) {
       this.logger.info({
-        message: `Starting session ${ this.sessionId }`, body: {}, id: this.sessionId, user: 'SYSTEM',
+        message: `Starting session ${this.sessionId}`, body: {}, id: this.sessionId, user: 'SYSTEM',
       });
     }
     return this.sessionId;

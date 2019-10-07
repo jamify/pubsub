@@ -9,7 +9,7 @@ import { Track } from './types';
 export class Instance {
   public static readonly PORT: number = 3000;
   public static readonly SYSTEM: any = {
-    id: -1,
+    id: 'SYSTEM',
   };
   private app: express.Application;
   private server: Server;
