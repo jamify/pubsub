@@ -16,3 +16,10 @@ export interface Me {
   image: string;
   product: string;
 }
+
+export interface Options {
+  message?: string;
+  channel?: string;
+  me?: Me;
+  track?: Track;
+}
