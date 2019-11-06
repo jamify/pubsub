@@ -3,7 +3,7 @@
     "name": "pubsub",
     "type": "npm",
     "public": true,
-    "alias": "pubsub-jamify",
+    "alias": "pubsub.jamify.io",
     "files": [
         "src",
         "tsconfig.json"
