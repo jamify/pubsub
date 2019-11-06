@@ -6,6 +6,7 @@
     "alias": "pubsub.jamify.io",
     "files": [
         "src",
+        "package.json",
         "tsconfig.json"
     ]
 }
