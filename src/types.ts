@@ -23,3 +23,11 @@ export interface Options {
   me?: Me;
   track?: Track;
 }
+
+export interface Log {
+  withMessage(message: string): Log;
+  withTrack(track: Track): Log;
+  withMe(me: Me): Log;
+  withChannel(channel: string): Log;
+  log(): void;
+}

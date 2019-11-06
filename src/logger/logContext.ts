@@ -1,6 +1,5 @@
-import { Log } from './log';
-import { Level } from './level';
-import { Track, Me, Options } from '../types';
+import { Level } from '../constants';
+import { Track, Me, Options, Log } from '../types';
 import { createLogger, transports, Logger, format } from 'winston';
 
 export class LogContext implements Log {
