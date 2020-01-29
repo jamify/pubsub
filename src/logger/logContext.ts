@@ -9,7 +9,7 @@ export class LogContext implements Log {
       format.prettyPrint(),
     ),
     transports: [
-      new transports.Console(),
+      new transports.Console({ level: 'debug' }),
     ],
   });
 

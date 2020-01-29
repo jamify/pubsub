@@ -7,7 +7,7 @@ import { Track } from './types';
 import { Logger } from './logger/logger';
 
 export class Instance {
-  public static readonly PORT: number = 3000;
+  public static readonly PORT: number = 3001;
   private app: express.Application;
   private server: Server;
   private io: SocketIO.Server;
